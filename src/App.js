@@ -1,12 +1,14 @@
+import React, {Fragment} from 'react'
 import './App.css';
 import Header from './components/Header'
+import Todos from './components/Todos'
 
 const App = () => {
   return (
-    <div> 
+    <Fragment> 
       <Header />
-      <p>This is new app hello</p>
-    </div>
+      <Todos />
+    </Fragment>
   )
 }
 
