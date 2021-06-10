@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const TodoItem = props => {
     const todo = props.todoProps
-    
+    const markComplete = props.markCompleteFunc
+
     //css
     const todoItemStyle = {
         background: '#f4f4f4',
@@ -24,11 +26,17 @@ const TodoItem = props => {
     //return
     return (
         <p style = {todoItemStyle}> 
-           <input type="checkbox"/>
+           <input type="checkbox" onChange={markComplete.bind(this, todo.id)} checked={todo.completed}/>
            {todo.title}
            <button style={deleteButtonStyle}>Delete</button>
         </p>
     )
+}
+
+//PropTypes
+TodoItem.propTypes = {
+    todoProps: PropTypes.object.isRequired,
+    markCompleteFunc: PropTypes.func.isRequired
 }
 
 export default TodoItem
