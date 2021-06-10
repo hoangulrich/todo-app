@@ -29,10 +29,24 @@ const Todos = () => {
       setTodosState(newTodos)
    }
 
+   const deleteTodo = id => {
+      const newTodos = todosState.filter(todo => {
+         return todo.id !== id
+      })
+      setTodosState(newTodos)
+   }
+
    return (
       <Fragment>
        {todosState.map(todo => {
-           return <TodoItem todoProps={todo} markCompleteFunc = {markComplete}/>
+           return ( 
+           <TodoItem 
+               key = {todo.id} 
+               todoProps={todo} 
+               markCompleteFunc = {markComplete}
+               deleteTodoFunc = {deleteTodo}
+           />
+           )
        })}
       </Fragment>
    )
